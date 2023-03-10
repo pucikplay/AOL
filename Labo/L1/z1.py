@@ -1,5 +1,4 @@
 import random as rand
-import matplotlib.pyplot as plt
 
 H_100 = sum(1 / i for i in range(1,101))
 Hb_100 = sum(1 / pow(i,2) for i in range(1,101))
@@ -35,11 +34,14 @@ def access(list, x):
     list.append(x)
     return len(list) - 1
 
-def moveToFront(list, i):
+def nothing(list, counters, i):
+    return
+
+def moveToFront(list, counters, i):
     x = list.pop(i)
     list.insert(0, x)
 
-def transpose(list, i):
+def transpose(list, counters, i):
     if i != 0:
         tmp = list[i - 1]
         list[i - 1] = list[i]
@@ -60,5 +62,22 @@ def count(list, counters, i):
             list[i] = tmp_x
             counters[i] = tmp_cnt
 
-list = []
-counters = [0] * 100
+n_vals = [100,500,1000,5000,10000,50000,100000]
+distributions = [getUniform, getHarmonic, getBiharmonic, getGeometric]
+self_orders = [nothing, moveToFront, transpose, count]
+
+f = open("Labo/L1/out.txt", "w")
+
+for n in n_vals:
+    for dist in distributions:
+        for order in self_orders:
+            total_cost = 0
+            list = []
+            counters = [0] * 100
+            for i in range(0, n):
+                x = dist()
+                c = access(list, x)
+                order(list, counters, c)
+                total_cost += c
+            f.write("{},".format(total_cost/n))
+    f.write("\n")
