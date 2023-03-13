@@ -8,22 +8,28 @@ def getUniform():
 
 def getHarmonic():
     r = rand.random()
+    sum = 0
     for i in range(1,100):
-        if r >= (1 / (i * H_100)):
+        sum += 1 / (i * H_100)
+        if r < sum:
             return i
     return 100
 
 def getBiharmonic():
     r = rand.random()
+    sum = 0
     for i in range(1,100):
-        if r >= (1 / (pow(i, 2) * Hb_100)):
+        sum += 1 / (pow(i, 2) * Hb_100)
+        if r < sum:
             return i
     return 100
 
 def getGeometric():
     r = rand.random()
+    sum = 0
     for i in range(1,100):
-        if r >= pow(2, -i):
+        sum += pow(2, -i)
+        if r < sum:
             return i
     return 100
 
@@ -78,6 +84,6 @@ for n in n_vals:
                 x = dist()
                 c = access(list, x)
                 order(list, counters, c)
-                total_cost += c
+                total_cost += c + 1
             f.write("{},".format(total_cost/n))
     f.write("\n")
