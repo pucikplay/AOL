@@ -23,7 +23,7 @@ if __name__ == "__main__":
             plt.legend()
             plt.xlabel("n")
             plt.ylabel("avg_cost")
-            plt.savefig("Labo/L2/charts/{}_{}.png".format(dist, method), dpi=300)
+            plt.savefig("Labo/L2/charts/k/{}_{}.png".format(dist, method), dpi=300)
             plt.close()
 
     for i,dist in enumerate(dists):
@@ -34,7 +34,7 @@ if __name__ == "__main__":
         plt.legend()
         plt.xlabel("n")
         plt.ylabel("avg_cost")
-        plt.savefig("Labo/L2/charts/{}.png".format(dist), dpi=300)
+        plt.savefig("Labo/L2/charts/dist/{}.png".format(dist), dpi=300)
         plt.close()
 
     for j,method in enumerate(methods):
@@ -45,5 +45,5 @@ if __name__ == "__main__":
         plt.legend()
         plt.xlabel("n")
         plt.ylabel("avg_cost")
-        plt.savefig("Labo/L2/charts/{}.png".format(method), dpi=300)
+        plt.savefig("Labo/L2/charts/cache/{}.png".format(method), dpi=300)
         plt.close()
