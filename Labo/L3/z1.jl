@@ -79,7 +79,6 @@ end
 function nextFit(list)
     counter = 0
     space = 0.0
-
     for x in list
         if x <= space
             space -= x
@@ -88,42 +87,114 @@ function nextFit(list)
             space = 1.0-x
         end
     end
-
     return counter
 end
 
 function randomFit(list)
     counter = 1
     spaces = [1.0]
-
     for x in list
         r = rand(1:counter)
         if spaces[r] >= x
             spaces[r] -= x
         else
-            
-
+            counter += 1
+            spaces = append!(spaces, 1.0 - x)
+        end
     end
-
+    return counter
 end
 
 function firstFit(list)
-    counter = 0
-
+    counter = 1
+    spaces = [1.0]
+    for x in list
+        i = 1
+        while i <= counter
+            if spaces[i] >= x
+                spaces[i] -= x
+                break
+            end
+            i += 1
+        end
+        if i > counter
+            counter += 1
+            spaces = append!(spaces, 1.0 - x)
+        end
+    end
+    return counter
 end
 
 function bestFit(list)
-    counter = 0
-
+    counter = 1
+    spaces = [1.0]
+    for x in list
+        i = 1
+        while i <= counter && spaces[i] < x
+            i += 1
+        end
+        if i > counter
+            counter += 1
+            spaces = append!(spaces, 1.0 - x)
+        else
+            spaces[i] -= x
+        end
+        j = i - 1
+        while j >= 1 && spaces[j] > spaces[i]
+            j -= 1
+        end
+        tmp = spaces[i]
+        spaces = deleteat!(spaces, i)
+        spaces = insert!(spaces, j+1, tmp)
+    end
+    return counter
 end
 
 function worstFit(list)
-    counter = 0
-
+    counter = 1
+    spaces = [1.0]
+    for x in list
+        i = counter
+        if spaces[counter] < x
+            i += 1
+            counter += 1
+            spaces = append!(spaces, 1.0 - x)
+        else
+            spaces[i] -= x
+        end
+        j = i - 1
+        while j >= 1 && spaces[j] > spaces[i]
+            j -= 1
+        end
+        tmp = spaces[i]
+        spaces = deleteat!(spaces, i)
+        spaces = insert!(spaces, j+1, tmp)
+    end
+    return counter
 end
 
+function getOptimum(list)
+    return ceil(sum(list))
+end
+
+F = [getUniform, getHarmonic, getBiharmonic, getGeometric]
+G = [nextFit, randomFit, firstFit, bestFit, worstFit]
+
 function main()
-    
+    noOfTests = 100000
+    for f in F
+        for g in G
+            counter = 0
+            opt = 0
+            for i in 1:noOfTests
+                list = getList(f)
+                counter += g(list)
+                opt += getOptimum(list)
+            end
+            print("$(counter/opt);")
+        end
+        print("\n")
+    end
 end
 
 main()
