@@ -94,12 +94,15 @@ function randomFit(list)
     counter = 1
     spaces = [1.0]
     for x in list
-        r = rand(1:counter)
-        if spaces[r] >= x
-            spaces[r] -= x
-        else
+        possible = filter(s -> s-x >= 0, spaces)
+        if length(possible) == 0
             counter += 1
             spaces = append!(spaces, 1.0 - x)
+        else
+            r = rand(1:length(possible))
+            bin = possible[r]
+            idx = (indexin(bin, spaces))[1]
+            spaces[idx] -= x
         end
     end
     return counter
