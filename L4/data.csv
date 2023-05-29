@@ -1,0 +1,12 @@
+getUniform,MTM,hyperCubeDist:6069.8724
+getUniform,MTM,torusDist:6100.3142
+getUniform,FLIP,hyperCubeDist:4605.2566
+getUniform,FLIP,torusDist:4605.8606
+getHarmonic,MTM,hyperCubeDist:2252.0894
+getHarmonic,MTM,torusDist:2483.2296
+getHarmonic,FLIP,hyperCubeDist:3565.074
+getHarmonic,FLIP,torusDist:3652.3384
+getBiharmonic,MTM,hyperCubeDist:581.2814
+getBiharmonic,MTM,torusDist:636.8838
+getBiharmonic,FLIP,hyperCubeDist:1404.5162
+getBiharmonic,FLIP,torusDist:1509.4352
