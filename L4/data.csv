@@ -1,12 +1,12 @@
-getUniform, MTM, hyperCubeDist, 6075.96305
-getUniform, MTM, torusDist, 6105.4698
-getUniform, FLIP, hyperCubeDist, 4612.49275
-getUniform, FLIP, torusDist, 4603.8253
-getHarmonic, MTM, hyperCubeDist, 2248.9292
-getHarmonic, MTM, torusDist, 2481.1797
-getHarmonic, FLIP, hyperCubeDist, 3567.48005
-getHarmonic, FLIP, torusDist, 3653.5029
-getBiharmonic, MTM, hyperCubeDist, 581.49595
-getBiharmonic, MTM, torusDist, 637.29005
-getBiharmonic, FLIP, hyperCubeDist, 1412.71965
-getBiharmonic, FLIP, torusDist, 1497.2554
+getUniform,MTM,hyperCubeDist:6069.8724
+getUniform,MTM,torusDist:6100.3142
+getUniform,FLIP,hyperCubeDist:4605.2566
+getUniform,FLIP,torusDist:4605.8606
+getHarmonic,MTM,hyperCubeDist:2252.0894
+getHarmonic,MTM,torusDist:2483.2296
+getHarmonic,FLIP,hyperCubeDist:3565.074
+getHarmonic,FLIP,torusDist:3652.3384
+getBiharmonic,MTM,hyperCubeDist:581.2814
+getBiharmonic,MTM,torusDist:636.8838
+getBiharmonic,FLIP,hyperCubeDist:1404.5162
+getBiharmonic,FLIP,torusDist:1509.4352

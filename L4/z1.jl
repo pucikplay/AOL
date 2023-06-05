@@ -122,7 +122,7 @@ algs = [MTM, FLIP]
 distributions = [getUniform, getHarmonic, getBiharmonic]
 
 function main()
-    no_of_tests = 20000
+    no_of_tests = 5000
     for distribution in distributions
         for algorithm in algs
             for dist_fun in dist_funs
@@ -131,7 +131,7 @@ function main()
                     request_list = genRequests(distribution)
                     total_cost += algorithm(request_list, dist_fun)
                 end
-                println("$(distribution), $(algorithm), $(dist_fun), $(total_cost/no_of_tests)")
+                println("$(distribution),$(algorithm),$(dist_fun):$(total_cost/no_of_tests)")
             end
         end
     end
